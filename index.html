@@ -1,104 +1,127 @@
-
-<!doctype html>
-<html lang="en-us">
+<!DOCTYPE html>
+<html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Super Mario 64 on the Web! 🐸</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <meta
+      name="description"
+      content="The best way to play Super Mario 64 on the go!"
+    />
+    <meta name="robots" content="noindex" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+    <title>Super Mario 64 on the Web!</title>
     <style>
-      body, html{
-        margin: 0;
-        padding: 0;
-        width: 100vw;
-        min-height: 100vh;
-        background-color: #111;
-        font-family: Arial, Helvetica, sans-serif;
-        color: white;
+      body,
+      html {
+        background-color: #000000;
         image-rendering: pixelated;
         scrollbar-width: none;
       }
       ::-webkit-scrollbar {
         display: none;
       }
-      #container {
-        width: 100vw;
-        height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
       canvas {
         width: 100vw;
         height: 100vh;
       }
-      #controls {
-        margin-left: 1em;
-        display: flex;
-        align-items: center;
-      }
-      #controller, #dmca {
-        padding-left: 4em;
-      }
     </style>
   </head>
   <body>
-    <div id="controls">
-      <div id="keyboard">
-        <h2>Keyboard Controls</h2>
-        <ul>
-          <li>Movement: Arrow Keys</li>
-          <li>A: X</li>
-          <li>B: C</li>
-          <li>L: Q</li>
-          <li>Z: Space</li>
-          <li>Start: Enter</li>
-          <li>C-stick: WASD</li>
-        </ul>
-      </div>
-      <div id="controller">
-        <h2>You can use a controller!</h2>
-        <h2>You can save!</h2>
-        <h2>Press page down to hide these instructions.</h2>
-        <h2>Press page up to see them again.</h2>
-      </div>
+    <div class="container text-light" id="controls">
+      <figure>
+        <blockquote class="blockquote">
+          <h1 class="display-6"><strong>Keyboard Controls</strong></h1>
+        </blockquote>
+        <figcaption class="blockquote-footer">
+          You can use a controller!
+        </figcaption>
+        <figcaption class="blockquote-footer">
+          You can save! Save is stored in local storage.
+        </figcaption>
+        <figcaption class="blockquote-footer">
+          Press page down to hide these instructions.
+        </figcaption>
+        <figcaption class="blockquote-footer">
+          Press page up to see them again.
+        </figcaption>
+      </figure>
+      <table class="table table-sm text-light" id="keyboard">
+        <thead>
+          <th scope="col">GameCube-Controller</th>
+          <th scope="col">Keyboard</th>
+        </thead>
+        <tbody>
+          <tr>
+            <td>A</td>
+            <td>X</td>
+          </tr>
+          <tr>
+            <td>B</td>
+            <td>C</td>
+          </tr>
+          <tr>
+            <td>L</td>
+            <td>Q</td>
+          </tr>
+          <tr>
+            <td>Z</td>
+            <td>Space</td>
+          </tr>
+          <tr>
+            <td>Start</td>
+            <td>Enter</td>
+          </tr>
+          <tr>
+            <td>C-Stick</td>
+            <td>WASD</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
     <div id="container">
       <canvas class="emscripten" id="canvas"></canvas>
     </div>
-    <script type='text/javascript'>
+    <script type="text/javascript">
       var Module = {
         preRun: [],
         postRun: [],
-        print: (function() {
-          return function(text) {
-            if (arguments.length > 1) text = Array.prototype.slice.call(arguments).join(' ');
+        print: (function () {
+          return function (text) {
+            if (arguments.length > 1)
+              text = Array.prototype.slice.call(arguments).join(" ");
             console.log(text);
           };
         })(),
-        printErr: function(text) {
+        printErr: function (text) {
           if (arguments.length > 1)
-            text = Array.prototype.slice.call(arguments).join(' ');
+            text = Array.prototype.slice.call(arguments).join(" ");
           console.error(text);
         },
-        canvas: (function() {
-          var canvas = document.getElementById('canvas');
+        canvas: (function () {
+          var canvas = document.getElementById("canvas");
           canvas.width = window.innerWidth; // Todo: how to do this from c++
           canvas.height = window.innerHeight;
-          canvas.addEventListener("webglcontextlost", function(e) {
-            alert('WebGL context lost. You will need to reload the page.');
-            e.preventDefault();
-          }, false);
+          canvas.addEventListener(
+            "webglcontextlost",
+            function (e) {
+              alert("WebGL context lost. You will need to reload the page.");
+              e.preventDefault();
+            },
+            false
+          );
           return canvas;
         })(),
-        setStatus: function(text) {
-        }
+        setStatus: function (text) {},
       };
     </script>
     <script async type="text/javascript" src="sm64.us.f3dex2e.js"></script>
-    <script>
-    </script>
+    <script></script>
   </body>
 </html>
-
-
-
