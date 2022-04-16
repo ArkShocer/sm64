@@ -1,3 +1,5 @@
+# Audio works in firefox, but currently not on chrome 
+
 # sm64
 Super Mario 64 for the Browser!
 
